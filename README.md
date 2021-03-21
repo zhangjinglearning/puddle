@@ -18,3 +18,5 @@ $ yarn generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
+![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=zhangjinglearning&theme=vue-dark&show_icons=true)
