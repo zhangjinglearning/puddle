@@ -1,4 +1,5 @@
 {
-  "semi": false,
+  // "parser": "vue",
+  "semi": true,
   "singleQuote": true
 }
