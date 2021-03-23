@@ -15,6 +15,7 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ['element-ui/lib/theme-chalk/index.css'],
+  loading: '@/components/Loading.vue',
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: ['@/plugins/element-ui'],
@@ -42,4 +43,4 @@ export default {
   build: {
     transpile: [/^element-ui/],
   },
-}
+};

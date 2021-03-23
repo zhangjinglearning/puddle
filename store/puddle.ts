@@ -62,11 +62,11 @@ export const state = () => ({
 //   }
 // }
 
-// export const mutations = {
-//   updateValue: (state, payload) => {
-//     state.value = payload
-//   }
-// }
+export const mutations = {
+  updateArchive: (state, { index, flag }) => {
+    state.list[index].isArchive = flag;
+  },
+};
 
 // export const actions = {
 //   updateActionValue({ commit }) {

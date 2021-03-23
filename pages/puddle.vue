@@ -19,12 +19,12 @@
       </el-table-column>
       <el-table-column prop="date" label="日期"></el-table-column>
       <el-table-column label="归档" width="120">
-        <template slot-scope="{ row }">
+        <template slot-scope="{ row, $index }">
           <el-button
             type="primary"
             size="mini"
             :disabled="row.isArchive"
-            @click="row.isArchive = !row.isArchive"
+            @click="handleArchiveToggle($index, row)"
           >
             归档
           </el-button>
@@ -44,6 +44,8 @@
 <script lang="ts">
 import Vue from 'vue';
 import { mapState } from 'vuex';
+import { mapMutations } from 'vuex';
+
 import { EmailType } from '@/types/puddle';
 import EmailDialog from '@/components/puddle/EmailDialog.vue';
 import emailDialog from '@/minixs/puddle/emailDialog';
@@ -74,8 +76,15 @@ export default Vue.extend({
     },
   },
   methods: {
+    ...mapMutations('puddle', ['updateArchive']),
     handleSelectionChange(val) {
       this.multipleSelection = val;
+    },
+    handleArchiveToggle(index, row) {
+      this.updateArchive({
+        index,
+        flag: !row.isArchive,
+      });
     },
   },
 });
