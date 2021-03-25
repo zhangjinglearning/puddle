@@ -35,6 +35,7 @@
       <el-button @click="$refs.multipleTable.clearSelection()">
         取消选择
       </el-button>
+      <nuxt-link to="/">back</nuxt-link>
     </div>
 
     <email-dialog :flag.sync="dialogFlag" :email="dialogEmail"></email-dialog>
@@ -52,6 +53,16 @@ import emailDialog from '@/minixs/puddle/emailDialog';
 
 export default Vue.extend({
   name: 'Puddle',
+  async asyncData(context) {
+    const service = context.$axios.create({
+      withCredentials: true,
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      timeout: 10000,
+    });
+    service.get('/api/getSomething');
+  },
   components: {
     EmailDialog,
   },

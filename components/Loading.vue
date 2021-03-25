@@ -44,6 +44,7 @@ export default Vue.extend({
   justify-content: center;
   align-items: center;
   z-index: 999;
+  background-color: rgba(255,0,0,0.3);
 }
 
 .loading-button {

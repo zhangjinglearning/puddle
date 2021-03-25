@@ -1,10 +1,37 @@
 <template>
-  <el-row>
-    <el-col :span="16" :offset="4"><Nuxt /></el-col>
+  <el-row class="layout-box" :class="{ dark: isDark }">
+    <el-col :span="16" :offset="4">
+      <el-switch
+        v-model="isDark"
+        active-text="Dark"
+        inactive-text="Light"
+      ></el-switch>
+      <Nuxt />
+    </el-col>
   </el-row>
 </template>
 
+<script lang="ts">
+import Vue from 'vue';
+export default Vue.extend({
+  data() {
+    return {
+      isDark: false,
+    };
+  },
+});
+</script>
+
 <style>
+.layout-box {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.dark {
+  background-color: rgb(106, 78, 78, 0.7);
+}
+
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -51,5 +78,15 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.5s;
+}
+.page-enter,
+.page-leave-active {
+  opacity: 0;
+  transform: translateX(130px);
 }
 </style>

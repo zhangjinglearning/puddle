@@ -16,9 +16,13 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ['element-ui/lib/theme-chalk/index.css'],
   loading: '@/components/Loading.vue',
+  transition: {
+    name: 'page',
+    mode: 'out-in',
+  },
   server: {
     port: 8888,
-    host: 'fe.rocketbird.cn'
+    host: 'fe.rocketbird.cn',
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -38,7 +42,18 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/proxy',
   ],
+  proxy: {
+    '/api': {
+      target: 'https://beta.rocketbird.cn',
+      changeOrigin: true,
+      ws: true,
+      pathRewrite: {
+        '^/api': '',
+      },
+    },
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
